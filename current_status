@@ -1,0 +1,14 @@
+#!/bin/bash
+
+page_content=$(mktemp)
+
+trap "rm $page_content" EXIT
+
+wget -q  http://tamogatas.index.hu/ -O $page_content
+
+for KEY in donate-people donate-money; do
+    VAL=$(grep -A1 "id=.$KEY" $page_content | grep data-number-to | awk -F'"' '{print $2}')
+    echo -n "$VAL "
+done
+echo
+
