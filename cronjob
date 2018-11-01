@@ -1,0 +1,1 @@
+11 * * * *  ~/git/index-tamogatas/current_status >> ~/index-tamogatas.dat
